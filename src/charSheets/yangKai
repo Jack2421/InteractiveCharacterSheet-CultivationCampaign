@@ -1,0 +1,209 @@
+*Name:
+Yang Kai
+*Age:
+11
+*Spiritual Root:
+High Pure
+*Body:
+Jade Open
+*Comprehension:
+Prodigy
+*Skills:
+Qi Sensing
+Prodigy
+*Sect:
+Tranquil Cloud Pavillion
+*Exp:
+2449
+*Realm:
+Qi Refining 4
+*Str:
+3
+*Chr:
+4
+*Int:
+3
+*Lck:
+1
+*Max Qi:
+325
+*Contribution Points:
+50
+*Spirit Stones:
+87
+*Cultivation Techniques:
+[
+-Name:
+Dawnfire Convergence
+-Rank:
+Peak Common
+-Comprehension:
+Basic
+-Exp Gain:
+20
+]
+[
+-Name:
+Tranquil Cloud Qi Accumulation
+-Rank:
+Middle Common
+-Comprehension:
+Basic
+-Exp Gain:
+15
+]
+*Movement Techniques:
+[
+-Name:
+Spirit Step
+-Rank:
+Middle Common
+-Comprehension:
+Basic
+-Base Cost:
+20
+-Cost Difference:
+5
+]
+*Escape Techniques:
+[
+-Name:
+Scorching Trail
+-Rank:
+Peak Common
+-Comprehension:
+Basic
+-Speed:
+12.5
+]
+*Combat Techniques:
+[
+-Name:
+Swift Strikes
+-Rank:
+Low Common
+-Comprehension:
+Basic
+-Cost:
+10
+-Max Qi:
+200
+-Effect Cost:
+0
+-Effect:
+
+]
+[
+-Name:
+Rising Sea - Stream Severance
+-Rank:
+Peak Common
+-Comprehension:
+Basic
+-Cost:
+4
+-Max Qi:
+200
+-Effect Cost:
+100
+-Effect:
+deal an extra 50 damage to armor!
+]
+[
+-Name:
+Rising Sea - Flowing Ridge
+-Rank:
+Peak Common
+-Comprehension:
+Basic
+-Cost:
+3
+-Max Qi:
+200
+-Effect Cost:
+200
+-Effect:
+deal an extra 9 damage!
+]
+[
+-Name:
+Rising Sea - Rising Sea
+-Rank:
+Peak Common
+-Comprehension:
+Basic
+-Cost:
+2
+-Max Qi:
+500
+-Effect Cost:
+0
+-Effect:
+you sent out a rushing wave of qi attacking all enemies!
+]
+*Items:
+[
+-Name:
+Storage Ring
+-Amount:
+1
+-Description:
+My father's storage ring
+]
+[
+-Name:
+Jade Token
+-Amount:
+1
+-Description:
+Token for Immortal Ascension Sect used by new disciples to skip period of servitude.
+]
+[
+-Name:
+Sect Token
+-Amount:
+1
+-Description:
+Sect Token for Tranquil Cloud Peak
+]
+[
+-Name:
+Basic Iron Spear
+-Amount:
+1
+-Description:
+Iron Spear purchased from Tranquil CLoud Peak for 5 contribution points
+]
+[
+-Name:
+Herb Container
+-Amount:
+2
+-Description:
+Container used to store and transport medicinal herbs
+]
+*Consumables:
+[
+-Name:
+Qi Gathering Pill
+-Amount:
+3
+-Description:
+
+]
+[
+-Name:
+Fasting Pill
+-Amount:
+19
+-Description:
+Food of cultivators that prevents them from getting hungry
+]
+[
+-Name:
+Qi Nourishing Pill
+-Amount:
+1
+-Description:
+
+]

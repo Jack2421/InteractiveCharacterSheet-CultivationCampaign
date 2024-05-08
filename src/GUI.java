@@ -35,6 +35,40 @@ public class GUI implements ActionListener {
     private JPanel fzCultivation;
     private JRadioButton ironPalmStrike;
     private ButtonGroup fzAttacks;
+    private JButton createCharButton;
+
+    private JPanel charCreationPanel;
+    private JLabel newCharNameLabel;
+    private JTextField newCharNameField;
+    private JLabel newCharExpLabel;
+    private JFormattedTextField newCharExpField;
+    private JLabel newCharAgeLabel;
+    private JTextField newCharAgeField;
+    private JLabel newCharRootQualtiyLabel;
+    private JTextField newCharRootQualityField;
+    private JLabel newCharAttributeLabel;
+    private JTextField newCharAttributeField;
+    private JLabel newCharBonesLabel;
+    private JTextField newCharBonesField;
+    private JLabel newCharMeridianLabel;
+    private JTextField newCharMeridianField;
+    private JLabel newCharSectLabel;
+    private JTextField newCharSectField;
+    private JLabel newCharComprehensionLabel;
+    private JTextField newCharComprehensionField;
+    private JLabel newCharStrLabel;
+    private JFormattedTextField newCharStrField;
+    private JLabel newCharChrLabel;
+    private JFormattedTextField newCharChrField;
+    private JLabel newCharIntLabel;
+    private JFormattedTextField newCharIntField;
+    private JLabel newCharLckLabel;
+    private JFormattedTextField newCharLckField;
+    private JLabel newCharHealthLabel;
+    private JFormattedTextField newCharHealthField;
+    private JLabel newCharContributionLabel;
+    private JFormattedTextField newCharContributionField;
+
 
     public GUI() {
 
@@ -44,8 +78,9 @@ public class GUI implements ActionListener {
         ykCultivation = new JPanel();
         fzDamage = new JPanel();
         fzCultivation = new JPanel();
+        charCreationPanel = new JPanel();
 
-        frame.setSize(500, 500);
+        frame.setSize(1000, 1000);
         frame.add(loginPanel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Cultivation Campaign Damage Calculator");
@@ -54,6 +89,9 @@ public class GUI implements ActionListener {
 
         loginPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         loginPanel.setLayout(null);
+
+        charCreationPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
+        charCreationPanel.setLayout(null);
 
         ykDamage.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
         ykDamage.setLayout(null);
@@ -154,6 +192,19 @@ public class GUI implements ActionListener {
         damageDealt.setBounds(205, 50, 1000, 25);
         ykDamage.add(damageDealt);
         fzDamage.add(damageDealt);
+
+        createCharButton = new JButton("Create Character");
+        createCharButton.setBounds(100, 110, 150, 25);
+        createCharButton.addActionListener(this);
+        loginPanel.add(createCharButton);
+
+        newCharNameLabel = new JLabel("Name:");
+        newCharNameLabel.setBounds(10, 10, 80, 25);
+        charCreationPanel.add(newCharNameLabel);
+
+        newCharNameField = new JTextField();
+        newCharNameField.setBounds(100, 10, 80,25);
+        charCreationPanel.add(newCharNameField);
     }
 
     public static void main(String[] args) {
@@ -180,7 +231,7 @@ public class GUI implements ActionListener {
                 else {
                     success.setText("Choose Calculator!");
                 }
-            } else if (username.equals("Fu Zihao") && password.equals("1234")) {
+            } else if (username.equals("Fu Zihao") && password.equals("1927")) {
                 if (damageCalc.isSelected()) {
                     user = "Fu Zihao";
                     success.setText("Login successful!");
@@ -188,8 +239,8 @@ public class GUI implements ActionListener {
                     frame.add(fzDamage, BorderLayout.CENTER);
                 } else if (cultivationCalc.isSelected()) {
                     success.setText("Not Yet Implemented!");
-                    frame.remove(loginPanel);
-                    frame.add(fzCultivation, BorderLayout.CENTER);
+                    //frame.remove(loginPanel);
+                    //frame.add(fzCultivation, BorderLayout.CENTER);
                 }
                 else {
                     success.setText("Choose Calculator!");
@@ -222,7 +273,7 @@ public class GUI implements ActionListener {
                 }
             } else if (user.equals("Fu Zihao")) {
                 if (ironPalmStrike.isSelected() && (qiUsed <= 400)) {
-                    damage = (qiUsed/5) + 8;
+                    damage = (qiUsed/5) + 13;
                     damageDealt.setText("You dealt " + damage + " damage!");
                 } else {
                     damageDealt.setText("Select technique or use less qi!");
@@ -230,6 +281,12 @@ public class GUI implements ActionListener {
             }
         } else if ((e.getSource() == calculate) && cultivationCalc.isSelected()) {
 
+        } else if ((e.getSource() == createCharButton)) {
+            //frame.remove(loginPanel);
+            //frame.add(charCreationPanel, BorderLayout.CENTER);
+            success.setText("Not Yet Implemented!");
+        } else {
+            System.out.println("Nope");
         }
     }
 }
