@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.FieldPosition;
 import java.text.NumberFormat;
+import java.text.ParsePosition;
 
 public class GUI implements ActionListener {
 
@@ -36,7 +38,6 @@ public class GUI implements ActionListener {
     private JRadioButton ironPalmStrike;
     private ButtonGroup fzAttacks;
     private JButton createCharButton;
-
     private JPanel charCreationPanel;
     private JLabel newCharNameLabel;
     private JTextField newCharNameField;
@@ -46,8 +47,10 @@ public class GUI implements ActionListener {
     private JTextField newCharAgeField;
     private JLabel newCharRootQualtiyLabel;
     private JTextField newCharRootQualityField;
-    private JLabel newCharAttributeLabel;
-    private JTextField newCharAttributeField;
+    private JLabel newCharRootPurityLabel;
+    private JTextField newCharRootPurityField;
+    private JLabel newCharRootAttributeLabel;
+    private JTextField newCharRootAttributeField;
     private JLabel newCharBonesLabel;
     private JTextField newCharBonesField;
     private JLabel newCharMeridianLabel;
@@ -68,6 +71,8 @@ public class GUI implements ActionListener {
     private JFormattedTextField newCharHealthField;
     private JLabel newCharContributionLabel;
     private JFormattedTextField newCharContributionField;
+    private JLabel newCharSpiritStonesLabel;
+    private JFormattedTextField newCharSpiritStonesField;
 
 
     public GUI() {
@@ -199,12 +204,140 @@ public class GUI implements ActionListener {
         loginPanel.add(createCharButton);
 
         newCharNameLabel = new JLabel("Name:");
-        newCharNameLabel.setBounds(10, 10, 80, 25);
+        newCharNameLabel.setBounds(10, 10, 50, 25);
         charCreationPanel.add(newCharNameLabel);
 
         newCharNameField = new JTextField();
-        newCharNameField.setBounds(100, 10, 80,25);
+        newCharNameField.setBounds(160, 10, 80,25);
         charCreationPanel.add(newCharNameField);
+
+        newCharExpLabel = new JLabel("Total Expirience:");
+        newCharExpLabel.setBounds(10, 40, 100, 25);
+        charCreationPanel.add(newCharExpLabel);
+
+        NumberFormat newCharExpFormat = NumberFormat.getNumberInstance();
+        newCharExpField = new JFormattedTextField(newCharExpFormat);
+        newCharExpField.setBounds(160, 40, 80, 25);
+        charCreationPanel.add(newCharExpField);
+
+        newCharAgeLabel = new JLabel("Age:");
+        newCharAgeLabel.setBounds(10, 70, 50, 25);
+        charCreationPanel.add(newCharAgeLabel);
+
+        NumberFormat newCharAgeFormat = NumberFormat.getNumberInstance();
+        newCharAgeField = new JFormattedTextField(newCharAgeFormat);
+        newCharAgeField.setBounds(160, 70, 80, 25);
+        charCreationPanel.add(newCharAgeField);
+
+        newCharRootQualtiyLabel = new JLabel("Spiritual Root Quality:");
+        newCharRootQualtiyLabel.setBounds(10, 100, 140, 25);
+        charCreationPanel.add(newCharRootQualtiyLabel);
+
+        newCharRootQualityField = new JTextField();
+        newCharRootQualityField.setBounds(160, 100, 80, 25);
+        charCreationPanel.add(newCharRootQualityField);
+
+        newCharRootPurityLabel = new JLabel("Spiritual Root Purity:");
+        newCharRootPurityLabel.setBounds(10, 130, 140, 25);
+        charCreationPanel.add(newCharRootPurityLabel);
+
+        newCharRootPurityField = new JTextField();
+        newCharRootPurityField.setBounds(160, 130, 80, 25);
+        charCreationPanel.add(newCharRootPurityField);
+
+        newCharRootAttributeLabel = new JLabel("Spiritual Root Attribute:");
+        newCharRootAttributeLabel.setBounds(10, 160, 140, 25);
+        charCreationPanel.add(newCharRootAttributeLabel);
+
+        newCharRootAttributeField = new JTextField();
+        newCharRootAttributeField.setBounds(160, 160, 80, 25);
+        charCreationPanel.add(newCharRootAttributeField);
+
+        newCharBonesLabel = new JLabel("Bones:");
+        newCharBonesLabel.setBounds(10, 190, 140, 25);
+        charCreationPanel.add(newCharBonesLabel);
+
+        newCharBonesField = new JTextField();
+        newCharBonesField.setBounds(160, 190, 80, 25);
+        charCreationPanel.add(newCharBonesField);
+
+        newCharMeridianLabel = new JLabel("Meridians:");
+        newCharMeridianLabel.setBounds(10, 220, 140, 25);
+        charCreationPanel.add(newCharMeridianLabel);
+
+        newCharMeridianField = new JTextField();
+        newCharMeridianField.setBounds(160, 220, 80, 25);
+        charCreationPanel.add(newCharMeridianField);
+
+        newCharSectLabel = new JLabel("Sect:");
+        newCharSectLabel.setBounds(260, 10, 140, 25);
+        charCreationPanel.add(newCharSectLabel);
+
+        newCharSectField = new JTextField();
+        newCharSectField.setBounds(410, 10, 80, 25);
+        charCreationPanel.add(newCharSectField);
+
+        newCharComprehensionLabel = new JLabel("Comprehension:");
+        newCharComprehensionLabel.setBounds(260, 40, 140, 25);
+        charCreationPanel.add(newCharComprehensionLabel);
+
+        newCharComprehensionField = new JTextField();
+        newCharComprehensionField.setBounds(410, 40, 80, 25);
+        charCreationPanel.add(newCharComprehensionField);
+
+        newCharStrLabel = new JLabel("Strength:");
+        newCharStrLabel.setBounds(260, 70, 140, 25);
+        charCreationPanel.add(newCharStrLabel);
+
+        NumberFormat newCharStrFormat = NumberFormat.getNumberInstance();
+        newCharStrField = new JFormattedTextField(newCharStrFormat);
+        newCharStrField.setBounds(410, 70, 80, 25);
+        charCreationPanel.add(newCharStrField);
+
+        newCharIntLabel = new JLabel("Inteligence:");
+        newCharIntLabel.setBounds(260, 100, 140, 25);
+        charCreationPanel.add(newCharIntLabel);
+
+        NumberFormat newCharIntFormat = NumberFormat.getNumberInstance();
+        newCharIntField = new JFormattedTextField(newCharIntFormat);
+        newCharIntField.setBounds(410, 100, 80, 25);
+        charCreationPanel.add(newCharIntField);
+
+        newCharChrLabel = new JLabel("Charisma:");
+        newCharChrLabel.setBounds(260, 130, 140, 25);
+        charCreationPanel.add(newCharChrLabel);
+
+        NumberFormat newCharChrFormat = NumberFormat.getNumberInstance();
+        newCharChrField = new JFormattedTextField(newCharChrFormat);
+        newCharChrField.setBounds(410, 130, 80, 25);
+        charCreationPanel.add(newCharChrField);
+
+        newCharLckLabel = new JLabel("Luck:");
+        newCharLckLabel.setBounds(260, 160, 140, 25);
+        charCreationPanel.add(newCharLckLabel);
+
+        NumberFormat newCharLckFormat = NumberFormat.getNumberInstance();
+        newCharLckField = new JFormattedTextField(newCharLckFormat);
+        newCharLckField.setBounds(410, 160, 80, 25);
+        charCreationPanel.add(newCharLckField);
+
+        newCharContributionLabel = new JLabel("Contribution Points:");
+        newCharContributionLabel.setBounds(260, 190, 140, 25);
+        charCreationPanel.add(newCharContributionLabel);
+
+        NumberFormat newCharContributionFormat = NumberFormat.getNumberInstance();
+        newCharContributionField = new JFormattedTextField(newCharContributionFormat);
+        newCharContributionField.setBounds(410, 190, 80, 25);
+        charCreationPanel.add(newCharContributionField);
+
+        newCharSpiritStonesLabel = new JLabel("Spirit Stones:");
+        newCharSpiritStonesLabel.setBounds(260, 220, 140, 25);
+        charCreationPanel.add(newCharSpiritStonesLabel);
+
+        NumberFormat newCharSpiritStonesFormat = NumberFormat.getNumberInstance();
+        newCharSpiritStonesField = new JFormattedTextField(newCharSpiritStonesFormat);
+        newCharSpiritStonesField.setBounds(410, 220, 80, 25);
+        charCreationPanel.add(newCharSpiritStonesField);
     }
 
     public static void main(String[] args) {
@@ -223,10 +356,12 @@ public class GUI implements ActionListener {
                     success.setText("Login successful!");
                     frame.remove(loginPanel);
                     frame.add(ykDamage, BorderLayout.CENTER);
+                    frame.revalidate();
                 } else if (cultivationCalc.isSelected()) {
                     success.setText("Not Yet Implemented!");
                     frame.remove(loginPanel);
                     frame.add(ykCultivation, BorderLayout.CENTER);
+                    frame.revalidate();
                 }
                 else {
                     success.setText("Choose Calculator!");
@@ -237,10 +372,12 @@ public class GUI implements ActionListener {
                     success.setText("Login successful!");
                     frame.remove(loginPanel);
                     frame.add(fzDamage, BorderLayout.CENTER);
+                    frame.revalidate();
                 } else if (cultivationCalc.isSelected()) {
                     success.setText("Not Yet Implemented!");
                     //frame.remove(loginPanel);
                     //frame.add(fzCultivation, BorderLayout.CENTER);
+                    //frame.revalidate();
                 }
                 else {
                     success.setText("Choose Calculator!");
@@ -282,9 +419,9 @@ public class GUI implements ActionListener {
         } else if ((e.getSource() == calculate) && cultivationCalc.isSelected()) {
 
         } else if ((e.getSource() == createCharButton)) {
-            //frame.remove(loginPanel);
-            //frame.add(charCreationPanel, BorderLayout.CENTER);
-            success.setText("Not Yet Implemented!");
+            frame.add(charCreationPanel, BorderLayout.CENTER);
+            frame.remove(loginPanel);
+            frame.revalidate();
         } else {
             System.out.println("Nope");
         }
