@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.text.FieldPosition;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
+import java.util.ArrayList;
 
 public class GUI implements ActionListener {
 
@@ -37,7 +38,7 @@ public class GUI implements ActionListener {
     private JPanel fzCultivation;
     private JRadioButton ironPalmStrike;
     private ButtonGroup fzAttacks;
-    private JButton createCharButton;
+    private JButton createNewCharButton;
     private JPanel charCreationPanel;
     private JLabel newCharNameLabel;
     private JTextField newCharNameField;
@@ -73,7 +74,71 @@ public class GUI implements ActionListener {
     private JFormattedTextField newCharContributionField;
     private JLabel newCharSpiritStonesLabel;
     private JFormattedTextField newCharSpiritStonesField;
+    private JButton createCharButton;
+    private characterCreator newCharacter;
+    private JPanel charSheet;
+    private JComboBox chooseChar;
+    private JButton charSheetButton;
 
+    private JLabel charNameLabel;
+    private JLabel charAgeLabel;
+    private JLabel charRealmLabel;
+    private JLabel charSpitualRootLabel;
+    private JLabel charBodyLabel;
+    private JLabel charExpLabel;
+    private JLabel charRootQualityLabel;
+    private JLabel charRootPurityAttributeLabel;
+    private JLabel charBonesLabel;
+    private JLabel charMeridianLabel;
+    private JLabel charSectLabel;
+    private JLabel charStatLabel;
+    private JLabel charStrLabel;
+    private JLabel charComprehensionLabel;
+    private JLabel charIntLabel;
+    private JLabel charChrLabel;
+    private JLabel charSpiritStonesLabel;
+    private JLabel charLckLabel;
+    private JLabel charHpLabel;
+    private JLabel charContributionLabel;
+    private JLabel charQiLabel;
+    private JLabel charSkillsLabel;
+    private JLabel charMainTechiquesLabel;
+    private JButton allTechniquesButton;
+    private JButton inventoryButton;
+    private JPanel inventoryPanel;
+    private JPanel techniquesPanel;
+    private JButton calculateCostButton;
+    private String name;
+    private int age;
+    private String realm;
+    private int spiritualRoot;
+    private String rootQuality;
+    private String rootAttribute;
+    private String bones;
+    private String meridians;
+    private String sect;
+    private int exp;
+    private int str;
+    private int intel;
+    private int chr;
+    private int lck;
+    private String comprehension;
+    private int maxHp;
+    private int hp;
+    private int contribution;
+    private int maxQi;
+    private int qi;
+    private String techOne;
+    private String techTwo;
+    private String techThree;
+    private String techFour;
+    private String techFive;
+    private String skillOne;
+    private String skillTwo;
+    private String skillThree;
+    private String skillFour;
+    private String skillFive;
+    private String[] charNames = {};
 
     public GUI() {
 
@@ -84,6 +149,7 @@ public class GUI implements ActionListener {
         fzDamage = new JPanel();
         fzCultivation = new JPanel();
         charCreationPanel = new JPanel();
+        charSheet = new JPanel();
 
         frame.setSize(1000, 1000);
         frame.add(loginPanel, BorderLayout.CENTER);
@@ -198,10 +264,10 @@ public class GUI implements ActionListener {
         ykDamage.add(damageDealt);
         fzDamage.add(damageDealt);
 
-        createCharButton = new JButton("Create Character");
-        createCharButton.setBounds(100, 110, 150, 25);
-        createCharButton.addActionListener(this);
-        loginPanel.add(createCharButton);
+        createNewCharButton = new JButton("Create Character");
+        createNewCharButton.setBounds(100, 110, 150, 25);
+        createNewCharButton.addActionListener(this);
+        loginPanel.add(createNewCharButton);
 
         newCharNameLabel = new JLabel("Name:");
         newCharNameLabel.setBounds(10, 10, 50, 25);
@@ -338,9 +404,29 @@ public class GUI implements ActionListener {
         newCharSpiritStonesField = new JFormattedTextField(newCharSpiritStonesFormat);
         newCharSpiritStonesField.setBounds(410, 220, 80, 25);
         charCreationPanel.add(newCharSpiritStonesField);
+
+        createCharButton = new JButton("Create Character");
+        createCharButton.setBounds(50, 250, 390, 50);
+        createCharButton.addActionListener(this);
+        charCreationPanel.add(createCharButton);
+
+        chooseChar = new JComboBox();
+        chooseChar.setBounds(260, 110, 150, 25);
+        loginPanel.add(chooseChar);
+
+        charSheetButton = new JButton("Open Character Sheet");
+        charSheetButton.setBounds(420, 110, 180, 25);
+        loginPanel.add(charSheetButton);
+
+        charNameLabel = new JLabel("Name: "+ name);
+        //charNameLabel.setBounds();
+        charSheet.add(charNameLabel);
     }
 
     public static void main(String[] args) {
+
+        //while
+
         new GUI();
     }
 
@@ -357,11 +443,13 @@ public class GUI implements ActionListener {
                     frame.remove(loginPanel);
                     frame.add(ykDamage, BorderLayout.CENTER);
                     frame.revalidate();
+                    frame.repaint();
                 } else if (cultivationCalc.isSelected()) {
                     success.setText("Not Yet Implemented!");
                     frame.remove(loginPanel);
                     frame.add(ykCultivation, BorderLayout.CENTER);
                     frame.revalidate();
+                    frame.repaint();
                 }
                 else {
                     success.setText("Choose Calculator!");
@@ -373,6 +461,7 @@ public class GUI implements ActionListener {
                     frame.remove(loginPanel);
                     frame.add(fzDamage, BorderLayout.CENTER);
                     frame.revalidate();
+                    frame.repaint();
                 } else if (cultivationCalc.isSelected()) {
                     success.setText("Not Yet Implemented!");
                     //frame.remove(loginPanel);
@@ -418,12 +507,38 @@ public class GUI implements ActionListener {
             }
         } else if ((e.getSource() == calculate) && cultivationCalc.isSelected()) {
 
-        } else if ((e.getSource() == createCharButton)) {
+        } else if ((e.getSource() == createNewCharButton)) {
             frame.add(charCreationPanel, BorderLayout.CENTER);
             frame.remove(loginPanel);
             frame.revalidate();
+        } else if ((e.getSource() == createCharButton)) {
+            String name = newCharNameField.getText();
+            String exp = newCharExpField.getText();
+            String age = newCharAgeField.getText();
+            String rootQuality = newCharRootQualityField.getText();
+            String rootPurity = newCharRootPurityField.getText();
+            String rootAttribute = newCharRootAttributeField.getText();
+            String bones = newCharBonesField.getText();
+            String meridians = newCharMeridianField.getText();
+            String sect = newCharSectField.getText();
+            String comprehension = newCharComprehensionField.getText();
+            String strength = newCharStrField.getText();
+            String inteligence = newCharIntField.getText();
+            String charisma = newCharChrField.getText();
+            String luck = newCharLckField.getText();
+            String contribution = newCharContributionField.getText();
+            String stones = newCharSpiritStonesField.getText();
+            newCharacter = new characterCreator();
+            chooseChar.addItem(newCharacter.createCharacter(name, exp, age, rootQuality, rootPurity, rootAttribute, bones, meridians, sect, comprehension, strength, inteligence, charisma, luck, contribution, stones));
+            frame.add(loginPanel, BorderLayout.CENTER);
+            frame.remove(charCreationPanel);
+            frame.revalidate();
+            frame.repaint();
+            success.setText("Character Created!");
+        } else if (e.getSource() == charSheetButton) {
+            
         } else {
-            System.out.println("Nope");
+            System.out.println("error?");
         }
     }
 }
