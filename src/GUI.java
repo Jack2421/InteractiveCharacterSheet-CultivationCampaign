@@ -139,6 +139,10 @@ public class GUI implements ActionListener {
     private String skillFour;
     private String skillFive;
     private String[] charNames = {};
+    private String test;
+    private int x = 0;
+    private String  charSelected;
+    private int y;
 
     public GUI() {
 
@@ -200,11 +204,11 @@ public class GUI implements ActionListener {
         success = new JLabel("");
         success.setBounds(10, 140, 300, 25);
         loginPanel.add(success);
-        
+
         damageCalc = new JCheckBox("Damage Calculator");
         damageCalc.setBounds(10, 80, 200, 25);
         loginPanel.add(damageCalc);
-        
+
         cultivationCalc = new JCheckBox("Cultivation Calculator");
         cultivationCalc.setBounds(220, 80, 200, 25);
         loginPanel.add(cultivationCalc);
@@ -416,17 +420,30 @@ public class GUI implements ActionListener {
 
         charSheetButton = new JButton("Open Character Sheet");
         charSheetButton.setBounds(420, 110, 180, 25);
+        charSheetButton.addActionListener(this);
         loginPanel.add(charSheetButton);
 
-        charNameLabel = new JLabel("Name: "+ name);
-        //charNameLabel.setBounds();
+        charNameLabel = new JLabel();
+        charNameLabel.setBounds(10, 10, 50, 25);
         charSheet.add(charNameLabel);
+
+        charNames = csvReader.readCategory("src/charSheets/char_Names.csv", 0);
+        try {
+            while ((test = charNames[x]) != null) {
+                chooseChar.addItem(test);
+                x++;
+            }
+            x = 0;
+        } catch (Exception E) {
+            System.out.println("chooseChar setup finished");
+        }
+
+
     }
 
     public static void main(String[] args) {
 
         //while
-
         new GUI();
     }
 
@@ -536,7 +553,25 @@ public class GUI implements ActionListener {
             frame.repaint();
             success.setText("Character Created!");
         } else if (e.getSource() == charSheetButton) {
-            
+            charSelected = chooseChar.getSelectedItem().toString();
+            y = 0;
+            while (!(charNames[0].equals(charSelected))) {
+                charNames = csvReader.readLine("src/charSheets/character_Stats.csv", y);
+                System.out.println("Looking for character: " + charSelected);
+                System.out.println("Found Char: " + charNames[0]);
+                if (charNames[0].equals(charSelected)) {
+                    System.out.println("Correct Character Found");
+                } else {
+                    System.out.println("Still Looking");
+                    y++;
+                }
+            }
+            frame.add(charSheet, BorderLayout.CENTER);
+            frame.remove(loginPanel);
+            frame.revalidate();
+            frame.repaint();
+            charNameLabel.setText("Name: " + charNames[0]);
+
         } else {
             System.out.println("error?");
         }
