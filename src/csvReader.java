@@ -28,24 +28,22 @@ public class csvReader {
         String row = "test";
         String[] rowArray = null;
         System.out.println("Looking for line #" + line);
-        int lineNumber;
+        int lineNumber = 0;
 
         try {
-            LineNumberReader linenr = new LineNumberReader(new FileReader(path));
             BufferedReader linebr = new BufferedReader(new FileReader(path));
-            linenr.setLineNumber(0);
-            lineNumber = linenr.getLineNumber();
             System.out.println("Reading line #" + lineNumber);
             while (rowArray == null) {
-                linenr.setLineNumber(line);
-                lineNumber = linenr.getLineNumber();
                 row = linebr.readLine();
-                //System.out.println("Reading #" + linenr.getLineNumber());
+                System.out.println("Reading #" + lineNumber);
                 //System.out.println("Reading line: " + row);
-                if (linenr.getLineNumber() == line ){
+                if (lineNumber == line ){
                     rowArray = row.split(",");
                     System.out.println("Found: " + rowArray[0]);
+                } else if (lineNumber > 1000) {
+                    System.out.println("Got stuck in a loop");
                 }
+                lineNumber++;
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

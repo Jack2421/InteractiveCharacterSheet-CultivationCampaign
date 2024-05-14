@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class characterCreator {
-    public static String createCharacter(String name, String exp, String age, String rootQuality, String rootPurity, String rootAttribute, String bones, String meridians, String sect, String comprehension, String strength, String inteligence, String charisma, String luck, String contribution, String stones) {
+    public static String createCharacter(String name, String exp, String age, String rootQuality, String rootPurity, String rootAttribute, String bones, String meridians, String sect, String comprehension, String strength, String inteligence, String charisma, String luck, String contribution, String stones, String realm) {
         String filepath = "src/charSheets/character_Stats.csv";
         String filepathTwo = "src/charSheets/char_Names.csv";
         try {
@@ -11,7 +11,7 @@ public class characterCreator {
             BufferedWriter charbw = new BufferedWriter(charfw);
             PrintWriter charpw = new PrintWriter(charbw);
 
-            charpw.println(name+","+exp+","+age+","+rootQuality+","+rootPurity+","+rootAttribute+","+bones+","+meridians+","+sect+","+comprehension+","+strength+","+inteligence+","+charisma+","+luck+","+contribution+","+stones);
+            charpw.println(name+","+exp+","+age+","+rootQuality+","+rootPurity+","+rootAttribute+","+bones+","+meridians+","+sect+","+comprehension+","+strength+","+inteligence+","+charisma+","+luck+","+contribution+","+stones+","+realm);
             charpw.flush();
             charpw.close();
 

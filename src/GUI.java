@@ -1,7 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.text.FieldPosition;
 import java.text.NumberFormat;
 import java.text.ParsePosition;
@@ -79,11 +83,13 @@ public class GUI implements ActionListener {
     private JPanel charSheet;
     private JComboBox chooseChar;
     private JButton charSheetButton;
+    private JLabel newCharRealmLabel;
+    private JTextField newCharRealmField;
 
     private JLabel charNameLabel;
     private JLabel charAgeLabel;
     private JLabel charRealmLabel;
-    private JLabel charSpitualRootLabel;
+    private JLabel charSpiritualRootLabel;
     private JLabel charBodyLabel;
     private JLabel charExpLabel;
     private JLabel charRootQualityLabel;
@@ -108,41 +114,34 @@ public class GUI implements ActionListener {
     private JPanel inventoryPanel;
     private JPanel techniquesPanel;
     private JButton calculateCostButton;
-    private String name;
-    private int age;
-    private String realm;
-    private int spiritualRoot;
-    private String rootQuality;
-    private String rootAttribute;
-    private String bones;
-    private String meridians;
-    private String sect;
     private int exp;
     private int str;
     private int intel;
     private int chr;
     private int lck;
-    private String comprehension;
     private int maxHp;
     private int hp;
     private int contribution;
     private int maxQi;
     private int qi;
-    private String techOne;
-    private String techTwo;
-    private String techThree;
-    private String techFour;
-    private String techFive;
-    private String skillOne;
-    private String skillTwo;
-    private String skillThree;
-    private String skillFour;
-    private String skillFive;
+    private JLabel techOne;
+    private JLabel techTwo;
+    private JLabel techThree;
+    private JLabel techFour;
+    private JLabel techFive;
+    private JLabel skillOne;
+    private JLabel skillTwo;
+    private JLabel skillThree;
+    private JLabel skillFour;
+    private JLabel skillFive;
     private String[] charNames = {};
     private String test;
     private int x = 0;
     private String  charSelected;
     private int y;
+
+
+
 
     public GUI() {
 
@@ -154,6 +153,8 @@ public class GUI implements ActionListener {
         fzCultivation = new JPanel();
         charCreationPanel = new JPanel();
         charSheet = new JPanel();
+        inventoryPanel = new JPanel();
+        techniquesPanel = new JPanel();
 
         frame.setSize(1000, 1000);
         frame.add(loginPanel, BorderLayout.CENTER);
@@ -410,7 +411,7 @@ public class GUI implements ActionListener {
         charCreationPanel.add(newCharSpiritStonesField);
 
         createCharButton = new JButton("Create Character");
-        createCharButton.setBounds(50, 250, 390, 50);
+        createCharButton.setBounds(50, 280, 390, 50);
         createCharButton.addActionListener(this);
         charCreationPanel.add(createCharButton);
 
@@ -426,6 +427,117 @@ public class GUI implements ActionListener {
         charNameLabel = new JLabel();
         charNameLabel.setBounds(10, 10, 50, 25);
         charSheet.add(charNameLabel);
+
+        charAgeLabel = new JLabel();
+        charAgeLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charAgeLabel);
+
+        charRealmLabel = new JLabel();
+        charRealmLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charRealmLabel);
+
+        charSpiritualRootLabel = new JLabel();
+        charSpiritualRootLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charSpiritualRootLabel);
+
+        charBodyLabel = new JLabel();
+        charBodyLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charBodyLabel);
+
+        charExpLabel = new JLabel();
+        charExpLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charExpLabel);
+
+        charRootQualityLabel = new JLabel();
+        charRootQualityLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charRootQualityLabel);
+
+        charRootPurityAttributeLabel = new JLabel();
+        charRootPurityAttributeLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charRootPurityAttributeLabel);
+
+        charBonesLabel = new JLabel();
+        charBonesLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charBonesLabel);
+
+        charMeridianLabel = new JLabel();
+        charMeridianLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charMeridianLabel);
+
+        charSectLabel = new JLabel();
+        charSectLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charSectLabel);
+
+        charStatLabel = new JLabel();
+        charStatLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charStatLabel);
+
+        charStrLabel = new JLabel();
+        charStrLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charStrLabel);
+
+        charComprehensionLabel = new JLabel();
+        charComprehensionLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charComprehensionLabel);
+
+        charIntLabel = new JLabel();
+        charIntLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charIntLabel);
+
+        charChrLabel = new JLabel();
+        charChrLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charChrLabel);
+
+        charLckLabel = new JLabel();
+        charLckLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charLckLabel);
+
+        charHpLabel = new JLabel();
+        charHpLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charHpLabel);
+
+        charContributionLabel = new JLabel();
+        charContributionLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charContributionLabel);
+
+        charQiLabel = new JLabel();
+        charQiLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charQiLabel);
+
+        charSkillsLabel = new JLabel();
+        charSkillsLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charSkillsLabel);
+
+        charMainTechiquesLabel = new JLabel();
+        charMainTechiquesLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charMainTechiquesLabel);
+
+        allTechniquesButton = new JButton("All Techniques");
+        allTechniquesButton.setBounds(1, 1, 1, 25);
+        allTechniquesButton.addActionListener(this);
+        charSheet.add(allTechniquesButton);
+
+        inventoryButton = new JButton("Inventory");
+        inventoryButton.setBounds(1, 1, 1, 25);
+        inventoryButton.addActionListener(this);
+        charSheet.add(inventoryButton);
+
+        calculateCostButton = new JButton("Calculate Damage");
+        calculateCostButton.setBounds(1, 1, 1, 25);
+        calculateCostButton.addActionListener(this);
+        charSheet.add(calculateCostButton);
+
+        charRealmLabel = new JLabel("Realm: ");
+        charRealmLabel.setBounds(200, 250, 140, 25);
+        charCreationPanel.add(charRealmLabel);
+
+        newCharRealmField = new JTextField();
+        newCharRealmField.setBounds(250, 250, 80, 25);
+        charCreationPanel.add(newCharRealmField);
+
+        charSpiritStonesLabel = new JLabel();
+        charSpiritStonesLabel.setBounds(1, 1, 1, 25);
+        charSheet.add(charSpiritStonesLabel);
 
         charNames = csvReader.readCategory("src/charSheets/char_Names.csv", 0);
         try {
@@ -545,8 +657,9 @@ public class GUI implements ActionListener {
             String luck = newCharLckField.getText();
             String contribution = newCharContributionField.getText();
             String stones = newCharSpiritStonesField.getText();
+            String realm = newCharRealmField.getText();
             newCharacter = new characterCreator();
-            chooseChar.addItem(newCharacter.createCharacter(name, exp, age, rootQuality, rootPurity, rootAttribute, bones, meridians, sect, comprehension, strength, inteligence, charisma, luck, contribution, stones));
+            chooseChar.addItem(newCharacter.createCharacter(name, exp, age, rootQuality, rootPurity, rootAttribute, bones, meridians, sect, comprehension, strength, inteligence, charisma, luck, contribution, stones, realm));
             frame.add(loginPanel, BorderLayout.CENTER);
             frame.remove(charCreationPanel);
             frame.revalidate();
@@ -570,7 +683,46 @@ public class GUI implements ActionListener {
             frame.remove(loginPanel);
             frame.revalidate();
             frame.repaint();
+            if (charNames[16].equals("Qi Gathering 1")) {
+                maxQi = 100;
+            } else if (charNames[16].equals("Qi Gathering 2")) {
+                maxQi = 150;
+            } else if (charNames[16].equals("Qi Gathering 3")) {
+                maxQi = 225;
+            } else if (charNames[16].equals("Qi Gathering 4")) {
+                maxQi = 325;
+            } else if (charNames[16].equals("Qi Gathering 5")) {
+                maxQi = 450;
+            } else if (charNames[16].equals("Qi Gathering 6")) {
+                maxQi = 600;
+            } else if (charNames[16].equals("Qi Gathering 7")) {
+                maxQi = 800;
+            } else if (charNames[16].equals("Qi Gathering 8")) {
+                maxQi = 1000;
+            } else if (charNames[16].equals("Qi Gathering 9")) {
+                maxQi = 1200;
+            }
+            qi = maxQi;
             charNameLabel.setText("Name: " + charNames[0]);
+            charExpLabel.setText("Xp: " + charNames[1]);
+            charAgeLabel.setText("Age: " + charNames[2]);
+            charRealmLabel.setText("Realm: " + charNames[16]);
+            charSpiritualRootLabel.setText("Spiritual Root: " + charNames[3]);
+            charBodyLabel.setText("Body");
+            charRootQualityLabel.setText("Root Quality: " + charNames[3]);
+            charRootPurityAttributeLabel.setText("Attribute: " + charNames[4] + " " + charNames[5]);
+            charBonesLabel.setText("Bones: " + charNames[6]);
+            charMeridianLabel.setText("Meridians: " + charNames[7]);
+            charSectLabel.setText("Sect: " + charNames[8]);
+            charStatLabel.setText("Stats");
+            charStrLabel.setText("Strength: " + charNames[10] + "/10");
+            charComprehensionLabel.setText("Comprehension: " + charNames[9]);
+            charIntLabel.setText("Inteligence: " + charNames[11] + "/10");
+            charChrLabel.setText("Charisma: " + charNames[12] + "/10");
+            charLckLabel.setText("Luck: " + charNames[13] + "/10");
+            charSpiritStonesLabel.setText("Spirit Stones: " + charNames[15]);
+            charContributionLabel.setText("Contribution Points: " + charNames[14]);
+            charQiLabel.setText("Qi: " + qi + "/" + maxQi);
 
         } else {
             System.out.println("error?");
