@@ -86,34 +86,10 @@ public class GUI implements ActionListener {
     private JLabel newCharRealmLabel;
     private JTextField newCharRealmField;
 
-    private JLabel charNameLabel;
-    private JLabel charAgeLabel;
-    private JLabel charRealmLabel;
-    private JLabel charSpiritualRootLabel;
-    private JLabel charBodyLabel;
-    private JLabel charExpLabel;
-    private JLabel charRootQualityLabel;
-    private JLabel charRootPurityAttributeLabel;
-    private JLabel charBonesLabel;
-    private JLabel charMeridianLabel;
-    private JLabel charSectLabel;
-    private JLabel charStatLabel;
-    private JLabel charStrLabel;
-    private JLabel charComprehensionLabel;
-    private JLabel charIntLabel;
-    private JLabel charChrLabel;
-    private JLabel charSpiritStonesLabel;
-    private JLabel charLckLabel;
-    private JLabel charHpLabel;
-    private JLabel charContributionLabel;
-    private JLabel charQiLabel;
-    private JLabel charSkillsLabel;
-    private JLabel charMainTechiquesLabel;
-    private JButton allTechniquesButton;
-    private JButton inventoryButton;
+
     private JPanel inventoryPanel;
     private JPanel techniquesPanel;
-    private JButton calculateCostButton;
+
     private int exp;
     private int str;
     private int intel;
@@ -424,120 +400,14 @@ public class GUI implements ActionListener {
         charSheetButton.addActionListener(this);
         loginPanel.add(charSheetButton);
 
-        charNameLabel = new JLabel();
-        charNameLabel.setBounds(10, 10, 50, 25);
-        charSheet.add(charNameLabel);
-
-        charAgeLabel = new JLabel();
-        charAgeLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charAgeLabel);
-
-        charRealmLabel = new JLabel();
-        charRealmLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charRealmLabel);
-
-        charSpiritualRootLabel = new JLabel();
-        charSpiritualRootLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charSpiritualRootLabel);
-
-        charBodyLabel = new JLabel();
-        charBodyLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charBodyLabel);
-
-        charExpLabel = new JLabel();
-        charExpLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charExpLabel);
-
-        charRootQualityLabel = new JLabel();
-        charRootQualityLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charRootQualityLabel);
-
-        charRootPurityAttributeLabel = new JLabel();
-        charRootPurityAttributeLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charRootPurityAttributeLabel);
-
-        charBonesLabel = new JLabel();
-        charBonesLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charBonesLabel);
-
-        charMeridianLabel = new JLabel();
-        charMeridianLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charMeridianLabel);
-
-        charSectLabel = new JLabel();
-        charSectLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charSectLabel);
-
-        charStatLabel = new JLabel();
-        charStatLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charStatLabel);
-
-        charStrLabel = new JLabel();
-        charStrLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charStrLabel);
-
-        charComprehensionLabel = new JLabel();
-        charComprehensionLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charComprehensionLabel);
-
-        charIntLabel = new JLabel();
-        charIntLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charIntLabel);
-
-        charChrLabel = new JLabel();
-        charChrLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charChrLabel);
-
-        charLckLabel = new JLabel();
-        charLckLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charLckLabel);
-
-        charHpLabel = new JLabel();
-        charHpLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charHpLabel);
-
-        charContributionLabel = new JLabel();
-        charContributionLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charContributionLabel);
-
-        charQiLabel = new JLabel();
-        charQiLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charQiLabel);
-
-        charSkillsLabel = new JLabel();
-        charSkillsLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charSkillsLabel);
-
-        charMainTechiquesLabel = new JLabel();
-        charMainTechiquesLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charMainTechiquesLabel);
-
-        allTechniquesButton = new JButton("All Techniques");
-        allTechniquesButton.setBounds(1, 1, 1, 25);
-        allTechniquesButton.addActionListener(this);
-        charSheet.add(allTechniquesButton);
-
-        inventoryButton = new JButton("Inventory");
-        inventoryButton.setBounds(1, 1, 1, 25);
-        inventoryButton.addActionListener(this);
-        charSheet.add(inventoryButton);
-
-        calculateCostButton = new JButton("Calculate Damage");
-        calculateCostButton.setBounds(1, 1, 1, 25);
-        calculateCostButton.addActionListener(this);
-        charSheet.add(calculateCostButton);
-
-        charRealmLabel = new JLabel("Realm: ");
-        charRealmLabel.setBounds(200, 250, 140, 25);
-        charCreationPanel.add(charRealmLabel);
+        newCharRealmLabel = new JLabel("Realm: ");
+        newCharRealmLabel.setBounds(200, 250, 140, 25);
+        charCreationPanel.add(newCharRealmLabel);
 
         newCharRealmField = new JTextField();
         newCharRealmField.setBounds(250, 250, 80, 25);
         charCreationPanel.add(newCharRealmField);
 
-        charSpiritStonesLabel = new JLabel();
-        charSpiritStonesLabel.setBounds(1, 1, 1, 25);
-        charSheet.add(charSpiritStonesLabel);
 
         charNames = csvReader.readCategory("src/charSheets/char_Names.csv", 0);
         try {
@@ -679,8 +549,11 @@ public class GUI implements ActionListener {
                     y++;
                 }
             }
-            frame.add(charSheet, BorderLayout.CENTER);
+
             frame.remove(loginPanel);
+            frame.add(new backgroundCreator(charNames));
+            frame.pack();
+            frame.setLocationRelativeTo(null);
             frame.revalidate();
             frame.repaint();
             if (charNames[16].equals("Qi Gathering 1")) {
@@ -703,6 +576,7 @@ public class GUI implements ActionListener {
                 maxQi = 1200;
             }
             qi = maxQi;
+            /*
             charNameLabel.setText("Name: " + charNames[0]);
             charExpLabel.setText("Xp: " + charNames[1]);
             charAgeLabel.setText("Age: " + charNames[2]);
@@ -723,7 +597,7 @@ public class GUI implements ActionListener {
             charSpiritStonesLabel.setText("Spirit Stones: " + charNames[15]);
             charContributionLabel.setText("Contribution Points: " + charNames[14]);
             charQiLabel.setText("Qi: " + qi + "/" + maxQi);
-
+            */
         } else {
             System.out.println("error?");
         }
