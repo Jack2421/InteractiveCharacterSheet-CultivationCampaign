@@ -552,6 +552,7 @@ public class GUI implements ActionListener {
 
             frame.remove(loginPanel);
             frame.add(new backgroundCreator(charNames));
+
             frame.pack();
             frame.setLocationRelativeTo(null);
             frame.revalidate();
